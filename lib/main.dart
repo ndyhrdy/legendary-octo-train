@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+// import 'package:webview_flutter/webview_flutter.dart';
+// import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:clipboard/clipboard.dart';
 
 void main() {
@@ -80,9 +82,37 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Column(
         children: [
           Expanded(
+            // BELOW IS FOR flutter_webview_plugin IMPLEMENTATION
+            // child: WebviewScaffold(
+            //   url: "https://c3ce-140-213-200-67.ngrok.io/web/622ab823098abb5af6009486",
+            //   javascriptChannels: {
+            //     JavascriptChannel(
+            //       name: 'WebviewFlutterClipboard',
+            //       onMessageReceived: (JavascriptMessage message) {
+            //         FlutterClipboard.copy(message.message);
+            //       }
+            //     )
+            //   }
+            // )
+
+            // BELOW IS FOR webview_flutter IMPLEMENTATION
+            // child: WebView(
+            //   initialUrl: "https://c3ce-140-213-200-67.ngrok.io/web/622ab823098abb5af6009486",
+            //   javascriptMode: JavascriptMode.unrestricted,
+            //   javascriptChannels: {
+            //     JavascriptChannel(
+            //       name: 'WebviewFlutterClipboard',
+            //       onMessageReceived: (JavascriptMessage message) {
+            //         FlutterClipboard.copy(message.message);
+            //       }
+            //     )
+            //   }
+            // )
+            
+            // BELOW IS FOR flutter_inappwebview IMPLEMENTATION
             child: InAppWebView(
               key: GlobalKey(),
-              initialUrlRequest: URLRequest(url: Uri.parse("https://zealous-raman-13e6d1.netlify.app/")),
+              initialUrlRequest: URLRequest(url: Uri.parse("https://c3ce-140-213-200-67.ngrok.io/web/622ab823098abb5af6009486")),
               androidOnPermissionRequest: (controller, origin, resources) async {
                 return PermissionRequestResponse(
                     resources: resources,
